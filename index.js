@@ -30,7 +30,7 @@ app.post("/send-email", (req, res) => {
     subject,
     text: `
       ${text}
-        
+
       Customer status: ${firstTimeCustomer}  
       Phone number: ${number}`,
   };
@@ -48,7 +48,7 @@ app.post("/send-email", (req, res) => {
 });
 
 // Start the server
-const port = 3002; // You can change the port as needed
+const port = process.env.PORT || 3002;
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
