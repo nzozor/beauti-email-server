@@ -18,7 +18,7 @@ const transporter = nodemailer.createTransport({
 
 // RESTful API route for sending emails
 app.post("/send-email", (req, res) => {
-  const { to, subject, text, number, firstTimeCustomer } = req.body;
+  const { to, subject, text, number, firstTimeCustomer } = req.body.data;
 
   if (!to || !subject || !text) {
     return res.status(400).json({ error: "Invalid request data" });
