@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const nodemailer = require("nodemailer");
 const cors = require("cors");
+const hbs = require('nodemailer-express-handlebars');
+const path = require('path');
+
+
 
 // Middleware to parse JSON in request body
 app.use(express.json());
@@ -24,17 +28,26 @@ app.post("/send-email", (req, res) => {
     return res.status(400).json({ error: "Invalid request data" });
   }
 
+  const handlebarOptions = {
+    viewEngine: {
+      partialsDir: path.resolve('./'),
+      defaultLayout: false,
+    },
+    viewPath: path.resolve('./'),
+  };
+  transporter.use('compile', hbs(handlebarOptions))
+
   const mailOptions = {
     from: "nzozor@gmail.com", // Replace with your email address
     to,
     subject,
-    text: `
-      ${text}
-
-      Customer status: ${firstTimeCustomer}  
-      Phone number: ${number}
-      Funnel: ${funnel}
-      `,
+    template : 'email',
+    context:{
+      text: text, // replace {{name}} with Adebola
+      customerStatus: firstTimeCustomer,
+      phoneNumber: number,
+      funnel: funnel,
+    }
   };
 
   // Send the email
