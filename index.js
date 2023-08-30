@@ -6,7 +6,6 @@ const hbs = require('nodemailer-express-handlebars');
 const path = require('path');
 
 
-
 // Middleware to parse JSON in request body
 app.use(express.json());
 app.use(cors());
@@ -38,12 +37,13 @@ app.post("/send-email", (req, res) => {
   transporter.use('compile', hbs(handlebarOptions))
 
   const mailOptions = {
-    from: "nzozor@gmail.com", // Replace with your email address
+    from: "nzozor@gmail.com",
     to,
     subject,
     template : 'email',
     context:{
-      text: text, // replace {{name}} with Adebola
+      text: text,
+      email: to,
       customerStatus: firstTimeCustomer,
       phoneNumber: number,
       funnel: funnel,
