@@ -51,7 +51,7 @@ app.post("/send-email", (req, res) => {
   };
 
   const mailOptionsToCustomer = {
-    from: "testrandom@gmail.com",
+    from: "info@beautiskinclinic.com",
     to,
     subject: 'Consultation Booking Confirmation',
     template : 'emailToCustomer',
