@@ -55,27 +55,10 @@ app.post("/send-email", (req, res) => {
     to,
     subject: 'Consultation Booking Confirmation',
     template : 'emailToCustomer',
-    context:{
-      text: text,
-      email: to,
-      customerStatus: firstTimeCustomer,
-      phoneNumber: number,
-      funnel: funnel,
-    }
   };
 
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Error sending email:", error);
-      res.status(500).json({ error: "Failed to send email" });
-    } else {
-      console.log("Email sent:", info.response);
-      res.json({ message: "Email sent successfully" });
-    }
-  });
-
-  transporter.sendMail(mailOptionsToCustomer, (error, info) => {
     if (error) {
       console.error("Error sending email:", error);
       res.status(500).json({ error: "Failed to send email" });
