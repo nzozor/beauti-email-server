@@ -14,8 +14,8 @@ app.use(cors());
 const transporter = nodemailer.createTransport({
   service: "Gmail", // Replace with your email service
   auth: {
-    user: "nzozor@gmail.com", // Replace with your email address
-    pass: "yychmggtftmkjubv", // Replace with your email password
+    user: "info@beautiskinclinic.com", // Replace with your email address
+    pass: "rvhuyksmaiglygnt", // Replace with your email password
   },
 });
 
