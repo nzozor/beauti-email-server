@@ -37,7 +37,7 @@ app.post("/send-email", (req, res) => {
   transporter.use('compile', hbs(handlebarOptions))
 
   const mailOptions = {
-    from: "nzozor@gmail.com",
+    from: "info@beautiskinclinic.com",
     to: 'info@beautiskinclinic.com',
     subject,
     template : 'email',
